@@ -10,4 +10,4 @@ find_package(Boost REQUIRED)
 target_link_libraries(Sync PRIVATE ${Boost_LIBRARIES_DIR})
 
 # TODO: Add tests and install targets if needed.
-set(CMAKE_CXX_STANDART 17)
+set(CMAKE_CXX_STANDART 17) 
