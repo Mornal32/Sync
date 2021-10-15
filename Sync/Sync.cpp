@@ -7,12 +7,9 @@ const int DELETE_COUNT_MIN = 1;
 const int DELETE_COUNT_MAX = 50000;
 
 
-
 int fRand(int min, int max) {
-    std::random_device rd;
-    std::mt19937 rng(rd());
     std::uniform_int_distribution<std::mt19937::result_type> dist(min, max);
-    return dist(rng);
+    return dist(randNum::rng);
 }
 
 class Containers {
@@ -24,7 +21,7 @@ private:
     int delNum{};
     void initVec() {
         for (int i = 0; i < ITEMS_AMOUNT; ++i) {
-            vector.push_back( fRand(VALUE_MIN, VALUE_MAX));
+            vector.push_back(fRand(VALUE_MIN, VALUE_MAX));
         }
     }
     void initMap() {
@@ -33,10 +30,22 @@ private:
         }
     }
     void deleleRandomItemsAmountOfVec() {
-        for (auto i = 0; i < delNum; ++i) {
-            auto pos = fRand(0, static_cast<int>(vector.size()) - 1);
-            vector.erase(vector.begin() + pos);
+        std::vector<int> pos;
+        for (int i = 0; i < delNum; ++i) {
+            pos.push_back(fRand(0, vector.size()));
         }
+        std::sort(pos.begin(), pos.end());
+
+        std::vector<int> tmp;
+        int j = 0;
+        for (auto i = 0; i < vector.size();++i) {
+            if (pos[j] != i) {
+                tmp.push_back(vector[i]);
+            }
+            else
+                j++;
+        }
+        vector = tmp;
     }
     void deleleRandomItemsAmountOfMap() {
         for (auto i = 0; i < delNum; ++i) {
@@ -122,39 +131,20 @@ public:
         std::thread th1(&Containers::countNumbersInMap, this);
         std::thread th2(&Containers::countNumbersInVec, this);
         th1.join();
-        th2.join();
+        th2.join();        
         compareNumbers();
-        /*for (auto i : isInMap) {
-            std::cout << i << ", ";
-        }
-        std::cout << std::endl;
-        for (auto i : isInVec) {
-            std::cout << i << ", ";
-        }
-        std::cout << std::endl;
-        
-        for (auto i : isInMap) {
-            std::cout << i << ", ";
-        }
-        std::cout << std::endl;
-        for (auto i : isInVec) {
-            std::cout << i << ", ";
-        }
-        std::cout << std::endl;*/
     }
     void syncContainers() { // дописать
         std::thread th1(&Containers::substractNumbersInVec, this);
         std::thread th2(&Containers::substractNumbersInMap, this);
         th1.join();
         th2.join();
-
-        std::cout << "\nVECTOR size = " << vector.size() << "     " << vector.capacity();
-        std::cout << "\nMAP size = " << map.size() ;
     }
 };
 
 int main() {
     while (true) {
+        auto start = std::chrono::system_clock::now();
         Containers *containers = new Containers();
         std::cout << "1\n";
         containers->deleleRandomItemsAmount();
@@ -162,6 +152,9 @@ int main() {
         containers->countNumbers();
         std::cout << "3\n";
         containers->syncContainers();
+        std::cout << "\n";
+        auto end = std::chrono::system_clock::now();
+        std::cout << std::chrono::duration<double>(end - start).count() << std::endl;
         std::cout << "4\n";
         std::cout << "\n0 - Quit, 1 - Countinue: \n";
         bool q;
