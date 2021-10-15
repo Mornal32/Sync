@@ -8,9 +8,14 @@
 #include <bitset>
 #include <map>
 #include <algorithm>
-#include <random>
 #include <thread>
 #include <chrono>
 #include <mutex>
+
+#include <random>
+namespace randNum {
+	std::random_device rd;
+	std::mt19937 rng(rd());
+}
 
 // TODO: Reference additional headers your program requires here.
