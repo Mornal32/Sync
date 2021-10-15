@@ -17,4 +17,4 @@ TODO list:
 |----------------|-------------------------------|
 |1               | ~~Add multipthreading~~       |
 |2               | ~~improve perfomance~~        |
-|3               | add global variables as a consoleline commands|
+|3               | add global variables as console line commands|
