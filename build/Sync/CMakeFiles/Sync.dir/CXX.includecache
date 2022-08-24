@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ubu/workspace/github/Sync/Sync/Sync.cpp
+Sync.h
+/home/ubu/workspace/github/Sync/Sync/Sync.h
+
+/home/ubu/workspace/github/Sync/Sync/Sync.h
+iostream
+-
+vector
+-
+bitset
+-
+map
+-
+algorithm
+-
+thread
+-
+chrono
+-
+mutex
+-
+random
+-
+

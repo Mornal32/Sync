@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/ubu/workspace/github/Sync/build/Sync",
+  "command": "/usr/bin/g++    -g   -o CMakeFiles/Sync.dir/Sync.cpp.o -c /home/ubu/workspace/github/Sync/Sync/Sync.cpp",
+  "file": "/home/ubu/workspace/github/Sync/Sync/Sync.cpp"
+}
+]

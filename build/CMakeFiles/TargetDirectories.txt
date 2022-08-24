@@ -1,0 +1,5 @@
+/home/ubu/workspace/github/Sync/build/CMakeFiles/rebuild_cache.dir
+/home/ubu/workspace/github/Sync/build/CMakeFiles/edit_cache.dir
+/home/ubu/workspace/github/Sync/build/Sync/CMakeFiles/rebuild_cache.dir
+/home/ubu/workspace/github/Sync/build/Sync/CMakeFiles/edit_cache.dir
+/home/ubu/workspace/github/Sync/build/Sync/CMakeFiles/Sync.dir
