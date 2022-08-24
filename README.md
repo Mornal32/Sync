@@ -1,7 +1,7 @@
 # SyncContainers
 Sync 2 containers (vector & map) with multipthreading
 
-Task: Sync 2 containers vector(int) & map(int)(int). Delete random amount numbers. Then sync them (Duplicate items don't remove)
+Task: Generate 2 containers vector(int) & map(int)(int) with random digitals. Delete random amount numbers. Then sync them (Duplicate items don't remove)
 
 Example:
   
