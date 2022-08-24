@@ -1,8 +1,8 @@
 ﻿#include "Sync.h"
 
 const int ITEMS_AMOUNT = 1000000;
-const __int8 VALUE_MIN = 1;
-const __int8 VALUE_MAX = 9;
+const int8_t VALUE_MIN = 1;
+const int8_t VALUE_MAX = 9;
 const int DELETE_COUNT_MIN = 1;
 const int DELETE_COUNT_MAX = 50000;
 
@@ -98,10 +98,9 @@ private:
     }
 public:
     Containers() {
-        std::thread th0(&Containers::initRand, this);
+        initRand();
         std::thread th1(&Containers::initMap, this);
         std::thread th2(&Containers::initVec, this);
-        th0.join();
         th1.join();
         th2.join();
     }
@@ -146,16 +145,15 @@ int main() {
     while (true) {
         auto start = std::chrono::system_clock::now();
         Containers *containers = new Containers();
-        std::cout << "1\n";
+        std::cout << "Generating vector and map\n";
         containers->deleleRandomItemsAmount();
-        std::cout << "2\n";
+        std::cout << "Remove random items from vector and map\n";
         containers->countNumbers();
-        std::cout << "3\n";
+        std::cout << "Okey. What we have now?\n";
         containers->syncContainers();
-        std::cout << "\n";
+        std::cout << "Sync what we have.\n";
         auto end = std::chrono::system_clock::now();
         std::cout << std::chrono::duration<double>(end - start).count() << std::endl;
-        std::cout << "4\n";
         std::cout << "\n0 - Quit, 1 - Countinue: \n";
         bool q;
         std::cin >> q;

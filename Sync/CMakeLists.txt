@@ -6,8 +6,8 @@ cmake_minimum_required (VERSION 3.8)
 # Add source to this project's executable.
 add_executable (Sync "Sync.cpp" "Sync.h")
 
-find_package(Boost REQUIRED)
-target_link_libraries(Sync PRIVATE ${Boost_LIBRARIES_DIR})
+find_package(Threads REQUIRED)
+target_link_libraries(Sync PRIVATE Threads::Threads)
 
 # TODO: Add tests and install targets if needed.
 set(CMAKE_CXX_STANDART 17) 
